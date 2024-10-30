@@ -13,7 +13,7 @@ int main() {
         cout << "How many students ";
         cin >> numStudents;
 
-        vector<vector<int>> gradeBook(numStudents);
+        vector<vector<int> > gradeBook(numStudents);
 
         //outer loop for each Student
         for (int i = 0; i < numStudents; i++) {
@@ -27,29 +27,26 @@ int main() {
             cin >> inputVal;
 
                 for (int j = 1; inputVal > 0; j++) {
-                    gradeBook[i].push_back(inputVal);
+                    gradeBook.at(i).push_back(inputVal);
 
                     cout << "enter grade " << j + 1 << ": " << endl;
                     cin >> inputVal;
                 }
 
 
-            inputVal = 1;
-
         }
         //Reporting:
 
-        if (gradeBook[0].size() > 0) {
             cout << "Which student? " << endl;
             cin >> wStudent;
 
-            cout << "They have " << gradeBook[wStudent - 1].size() << " grades!" << endl;
+            cout << "They have " << gradeBook.at(wStudent - 1).size() << " grades!" << endl;
 
             cout << "Which grade? " << endl;
             cin >> wGrade;
-
-            cout << "The grade is " << gradeBook[wStudent - 1][wGrade - 1] << " !" << endl;
-        }
+            if (wStudent <= gradeBook.size() && wGrade <= gradeBook.at(wStudent-1).size()){
+                cout << "The grade is " << gradeBook.at(wStudent - 1).at(wGrade - 1) << " !" << endl;
+            }
 
 
     return 0;
